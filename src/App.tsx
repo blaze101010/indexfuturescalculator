@@ -3080,7 +3080,7 @@ function App() {
   const [entryPrice, setEntryPrice] = useState('')
   const [exitPrice, setExitPrice] = useState('')
   const [contractsCount, setContractsCount] = useState('')
-  const [accountBalance, setAccountBalance] = useState('')
+  const [accountBalance, _setAccountBalance] = useState('')
 
   // Risk/Reward Calculator
   const [rrEntryPrice, setRrEntryPrice] = useState('')
@@ -3905,7 +3905,7 @@ function App() {
                         </div>
                         <div className="breakdown-item">
                           <span>Risk (dollars per contract):</span>
-                          <span>${rrCalc.riskDollars.toFixed(2)}</span>
+                          <span>${rrCalc.riskDollars?.toFixed(2) ?? '0.00'}</span>
                         </div>
                         <div className="breakdown-item">
                           <span>Reward (points):</span>
@@ -3913,7 +3913,7 @@ function App() {
                         </div>
                         <div className="breakdown-item">
                           <span>Reward (dollars per contract):</span>
-                          <span>${rrCalc.rewardDollars.toFixed(2)}</span>
+                          <span>${rrCalc.rewardDollars?.toFixed(2) ?? '0.00'}</span>
                         </div>
                         <div className="breakdown-item">
                           <span>Risk/Reward Ratio:</span>
@@ -4079,7 +4079,7 @@ function App() {
                           {ddCalc.drawdown.toFixed(2)}%
                         </div>
                         <div className="contracts-rounded">
-                          ${ddCalc.loss.toFixed(2)} loss from peak
+                          ${ddCalc.loss?.toFixed(2) ?? '0.00'} loss from peak
                         </div>
                       </div>
 
@@ -4196,7 +4196,7 @@ function App() {
                         </div>
                         <div className="breakdown-item">
                           <span>Percent gain:</span>
-                          <span className="profit">{compCalc.percentGain.toFixed(2)}%</span>
+                          <span className="profit">{compCalc.percentGain?.toFixed(2) ?? '0.00'}%</span>
                         </div>
                         <div className="breakdown-item">
                           <span>Note:</span>
@@ -4294,11 +4294,11 @@ function App() {
                         </div>
                         <div className="breakdown-item">
                           <span>Commissions (round trip):</span>
-                          <span>${beCalc.totalCommission.toFixed(2)}</span>
+                          <span>${beCalc.totalCommission?.toFixed(2) ?? '0.00'}</span>
                         </div>
                         <div className="breakdown-item">
                           <span>Exchange fees (round trip):</span>
-                          <span>${beCalc.totalFees.toFixed(2)}</span>
+                          <span>${beCalc.totalFees?.toFixed(2) ?? '0.00'}</span>
                         </div>
                         <div className="breakdown-item">
                           <span>Total costs:</span>
